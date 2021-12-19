@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="easymall.dao.UserDao">
+
+<select id="login" parameterType="String" resultType="easymall.po.User">
+	select * from user where username=#{username}
+</select>
+
+<insert id="regist" parameterType="easymall.po.User" keyProperty="id" useGeneratedKeys="true">
+	insert into user(username,password,nickname,email,state,code) 
+	          values(#{username},#{password},#{nickname},#{email},#{state},#{code})
+</insert>
+
+<select id="findByemail" parameterType="String" resultType="easymall.po.User">
+	select * from user where email=#{email}
+</select>
+<update id="updateUser" parameterType="String">
+	update user set state=1 where email=#{email}
+</update>
+</mapper>

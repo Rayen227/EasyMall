@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="easymall.dao.ProductsDao">
+
+	<select id="allcategories" resultType="String">
+		select name from category
+	</select>
+	<select id="prodlist" resultType="easymall.po.Products" parameterType="map">
+		select * from products where (price between #{minprice} and #{maxprice})
+		<if test="name!='' and name!=null">
+			and name like concat('%',#{name},'%')
+		</if>
+		<if test="category!='' and category!=null">
+			and category=#{category}
+		</if>
+	</select>
+	
+	<select id="prodInfo" resultType="easymall.po.Products" parameterType="String">
+		select * from products where id=#{pid}
+	</select>
+	<insert id="save" parameterType="easymall.po.Products">
+		insert into products(id,name,price,category,pnum,imgurl,description)
+			values(#{id},#{name},#{price},#{category},#{pnum},#{imgurl},#{description})
+	</insert>
+	<select id="findByImgurl" parameterType="String" resultType="easymall.po.Products">
+		select * from products where imgurl=#{imgurl}
+	</select>
+	<delete id="delprod" parameterType="String">
+		delete from products where id=#{id}
+	</delete>
+
+</mapper>
