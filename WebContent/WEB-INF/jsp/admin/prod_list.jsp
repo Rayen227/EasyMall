@@ -1,13 +1,18 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@   page import="com.oracle.test.* "%>
 <!DOCTYPE HTML>
 <html>
+
+
 	<head>
 		<title>商品管理</title>
 		<meta charset="utf-8"/>
 		<link href="${ pageContext.request.contextPath }/css/managestyle.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
+	
+	
 	<div class="top">
 		<h1>商品管理</h1>
 	</div>	
@@ -40,8 +45,14 @@
 					<td><a href="${ pageContext.request.contextPath }/admin/delprod?id=${prod.id}">删除</a></td>
 				</tr>				
 				</c:forEach>
-			</table>
+	</table>
 	
+
+	
+
+	<a href="${ pageContext.request.contextPath }/POIExcel">shengcheng</a>
 	</div>		
+	
+	
 	</body>	
 </html>
