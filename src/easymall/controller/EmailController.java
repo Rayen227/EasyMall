@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import easymall.po.User;
+import easymall.poiexcel.testPOI;
 import easymall.service.UserService;
 
 @Controller
@@ -32,5 +33,10 @@ public class EmailController {
 	    }
 	    model.addAttribute("messageError","已经成功激活，现在登录吧");//激活成功就跳到登录界面
 		return "login";
+	 }
+	 @RequestMapping("/poiexcel")
+	 public void poiexcel(HttpServletRequest request,Model model){
+		 testPOI mTJ = new testPOI();
+		 mTJ.testOutputExcel();
 	 }
 }

@@ -43,5 +43,6 @@
 			</table>
 	
 	</div>		
+	<a href="${pageContext.request.contextPath}/poiexcel">添加商品</a>
 	</body>	
 </html>
